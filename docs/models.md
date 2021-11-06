@@ -1,7 +1,7 @@
 Student:
     -has and belongs to many parents +
     -belongs to class +
-    -has one flashcard session
+    -has one flashcard session +
 Parent:
     -has and belongs to many students +
 Teacher:
@@ -11,8 +11,12 @@ Group:
     -has many students +
 
 FlashcardSession:
-    -belongs to student 
-    -has and belongs to many many flashcards 
+    -belongs to student +
+    -has and belongs to many many flashcards +
 
 flashcard:
-    -has and belongs to many flashcard sessions 
+    -has and belongs to many flashcard sessions +
+    -has many answers 
+
+answer:
+    -belongs_to flashcard  
