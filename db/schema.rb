@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_161544) do
+ActiveRecord::Schema.define(version: 2021_11_06_163655) do
+
+  create_table "flashcard_flashcard_sessions", id: false, force: :cascade do |t|
+    t.integer "flashcard_id"
+    t.integer "flashcard_session_id"
+    t.index ["flashcard_id"], name: "index_flashcard_flashcard_sessions_on_flashcard_id"
+    t.index ["flashcard_session_id"], name: "index_flashcard_flashcard_sessions_on_flashcard_session_id"
+  end
+
+  create_table "flashcard_sessions", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "student_id"
+    t.index ["student_id"], name: "index_flashcard_sessions_on_student_id"
+  end
+
+  create_table "flashcards", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
