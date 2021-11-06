@@ -1,0 +1,2 @@
+fields:
+    result (bool)

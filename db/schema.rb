@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_165118) do
+ActiveRecord::Schema.define(version: 2021_11_06_170941) do
 
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "flashcard_id"
+    t.boolean "result"
     t.index ["flashcard_id"], name: "index_answers_on_flashcard_id"
   end
 
@@ -36,12 +37,15 @@ ActiveRecord::Schema.define(version: 2021_11_06_165118) do
   create_table "flashcards", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "question"
+    t.text "answer"
   end
 
   create_table "groups", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "teacher_id"
+    t.string "name"
     t.index ["teacher_id"], name: "index_groups_on_teacher_id"
   end
 
@@ -53,6 +57,9 @@ ActiveRecord::Schema.define(version: 2021_11_06_165118) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "surname"
+    t.string "phone_number"
     t.index ["email"], name: "index_parents_on_email", unique: true
     t.index ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
   end
@@ -73,6 +80,9 @@ ActiveRecord::Schema.define(version: 2021_11_06_165118) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "group_id"
+    t.string "name"
+    t.string "surname"
+    t.date "date_of_birth"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["group_id"], name: "index_students_on_group_id"
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
@@ -86,6 +96,9 @@ ActiveRecord::Schema.define(version: 2021_11_06_165118) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "surname"
+    t.string "phone_number"
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end

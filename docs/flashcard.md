@@ -1,0 +1,3 @@
+fields: 
+    -question
+    -answer 

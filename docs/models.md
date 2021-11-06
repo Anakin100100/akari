@@ -16,7 +16,7 @@ FlashcardSession:
 
 flashcard:
     -has and belongs to many flashcard sessions +
-    -has many answers 
+    -has many answers +
 
 answer:
-    -belongs_to flashcard  
+    -belongs_to flashcard  +
