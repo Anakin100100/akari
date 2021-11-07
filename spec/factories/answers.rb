@@ -5,13 +5,15 @@ FactoryBot.define do
     result { Faker::Boolean.boolean }
     flashcard
 
-    train :correct do 
+    trait :correct do 
       result { true }
     end
 
-    train :incorrect do
+    trait :incorrect do
       result { false }
     end
 
+    factory :correct_answer, traits: [:correct]
+    factory :incorrect_answer, traits: [:incorrect]
   end
 end

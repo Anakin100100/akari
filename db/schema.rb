@@ -20,18 +20,18 @@ ActiveRecord::Schema.define(version: 2021_11_06_170941) do
     t.index ["flashcard_id"], name: "index_answers_on_flashcard_id"
   end
 
-  create_table "flashcard_flashcard_sessions", id: false, force: :cascade do |t|
-    t.integer "flashcard_id"
-    t.integer "flashcard_session_id"
-    t.index ["flashcard_id"], name: "index_flashcard_flashcard_sessions_on_flashcard_id"
-    t.index ["flashcard_session_id"], name: "index_flashcard_flashcard_sessions_on_flashcard_session_id"
-  end
-
   create_table "flashcard_sessions", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "student_id"
     t.index ["student_id"], name: "index_flashcard_sessions_on_student_id"
+  end
+
+  create_table "flashcard_sessions_flashcards", id: false, force: :cascade do |t|
+    t.integer "flashcard_id"
+    t.integer "flashcard_session_id"
+    t.index ["flashcard_id"], name: "index_flashcard_sessions_flashcards_on_flashcard_id"
+    t.index ["flashcard_session_id"], name: "index_flashcard_sessions_flashcards_on_flashcard_session_id"
   end
 
   create_table "flashcards", force: :cascade do |t|
