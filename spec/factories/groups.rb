@@ -12,6 +12,7 @@ FactoryBot.define do
         create_list(:student, evaluator.students_count, group: group)
       end
 
+
     end
   end
 end

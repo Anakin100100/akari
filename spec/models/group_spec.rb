@@ -16,4 +16,13 @@ RSpec.describe Group, type: :model do
     expect(group.students.count).to eq(10)
   end
 
+  it "assures that each student in group belongs to the same group" do
+    group = create(:group_with_students)
+    group.students.each do |student|
+      expect(student.group).to eq(group)
+    end
+  end
+
+  
+
 end

@@ -10,6 +10,7 @@ FactoryBot.define do
       flashcards do
         Array.new(flashcards_count) { association(:flashcard) }
       end
+
     end
   end
 end
