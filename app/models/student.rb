@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Student < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -5,6 +7,6 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :group
-  has_and_belongs_to_many :parents
-  has_one :flashcard_session
+  has_many :parents, through: :parents_students
+  has_one :flashcard_session, dependent: :destroy
 end

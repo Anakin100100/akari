@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :flashcard_session do
     student
@@ -10,7 +12,6 @@ FactoryBot.define do
       flashcards do
         Array.new(flashcards_count) { association(:flashcard) }
       end
-
     end
   end
 end

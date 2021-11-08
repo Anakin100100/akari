@@ -1,0 +1,10 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'config/environments/development.rb'
+    - 'bin/*'
+    - 'config/initializers/devise.rb'
+    - 'db/migrate/*'
+    - 'db/schema.rb'
+  NewCops: enable

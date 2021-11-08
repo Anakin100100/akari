@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateGroups < ActiveRecord::Migration[6.1]
   def change
     create_table :groups do |t|
@@ -5,4 +7,4 @@ class CreateGroups < ActiveRecord::Migration[6.1]
       t.belongs_to :teacher
     end
   end
-end 
+end

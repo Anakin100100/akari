@@ -1,11 +1,13 @@
-require 'faker' 
+# frozen_string_literal: true
+
+require 'faker'
 
 FactoryBot.define do
   factory :answer do
     result { Faker::Boolean.boolean }
     flashcard
 
-    trait :correct do 
+    trait :correct do
       result { true }
     end
 
