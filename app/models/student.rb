@@ -7,6 +7,6 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :group
-  has_many :parents, through: :parents_students
+  has_and_belongs_to_many :parents
   has_one :flashcard_session, dependent: :destroy
 end

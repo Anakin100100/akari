@@ -6,5 +6,5 @@ class Parent < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :students, through: :parents_students
+  has_and_belongs_to_many :students
 end
