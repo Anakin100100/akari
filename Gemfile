@@ -17,6 +17,9 @@ gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem "rubycritic", require: false
 
+#render react components
+gem 'react-rails'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
