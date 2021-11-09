@@ -1,0 +1,14 @@
+<h2 class="text-center font-semibold text-3xl mt-32">
+    Zaloguj się jako:
+</h2>
+<div class="flex justify-around mt-8">
+    <%= link_to student_session_path, class: "transition duration-500 ease-in-out bg-indigo-900 text-white py-2 px-3 rounded-xl hover:bg-indigo-600 transform hover:scale-105" do %>
+        Uczeń
+    <% end %>
+    <%= link_to teacher_session_path, class: "transition duration-500 ease-in-out bg-indigo-900 text-white py-2 px-3 rounded-xl hover:bg-indigo-600 transform hover:scale-105" do %>
+        Nauczyciel
+    <% end %>
+    <%= link_to parent_session_path, class: "transition duration-500 ease-in-out bg-indigo-900 text-white py-2 px-3 rounded-xl hover:bg-indigo-600 transform hover:scale-105" do %>
+        Rodzic
+    <% end %>
+</div>
