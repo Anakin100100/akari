@@ -1,0 +1,12 @@
+require: rubocop-rails
+
+AllCops:
+    NewCops: enable
+
+AllCops:
+  Exclude:
+    - 'config/environments/development.rb'
+    - 'bin/*'
+    - 'config/initializers/devise.rb'
+    - 'db/migrate/*'
+    - '\\wsl$\Ubuntu-20.04\home\pawel\akari\db\schema.rb'
