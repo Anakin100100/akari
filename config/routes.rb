@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   devise_for :teachers, path: 'teachers'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
-  get "logins" => "pages#logins"
-  get "registrations" => "pages#registrations"
+  get 'logins' => 'pages#logins'
+  get 'registrations' => 'pages#registrations'
 end
