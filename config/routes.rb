@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'logins' => 'pages#logins'
   get 'registrations' => 'pages#registrations'
+  get 'student_dashboard' => 'students#student_dashboard', as: :student_dashboard
+  get 'teacher_dashboard' => 'teachers#teacher_dashboard', as: :teacher_dashboard
 end
