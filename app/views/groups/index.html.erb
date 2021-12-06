@@ -6,4 +6,12 @@
             </button>
         <% end %>
     </div>
+    <p class="text-center mt-4 font-semibold text-4xl">
+        Grupy:
+    </p>
+    <div class="flex flex-wrap justify-items-center justify-around mx-16">
+        <% @groups.each do |group| %>
+            <%= render group, :group => group %>
+        <% end %>
+    </div>
 </div>
