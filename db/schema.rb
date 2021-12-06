@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_170941) do
+ActiveRecord::Schema.define(version: 2021_12_06_141640) do
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.integer "teacher_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["teacher_id"], name: "index_groups_on_teacher_id"
+  end
 
   create_table "students", force: :cascade do |t|
     t.string "email", default: "", null: false
