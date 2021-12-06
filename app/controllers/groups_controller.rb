@@ -9,7 +9,6 @@ class GroupsController < ApplicationController
     end
 
     def create
-        binding.pry
         @group = Group.new(group_params)
         @group.teacher_id = current_teacher.id
         if @group.save
@@ -17,6 +16,10 @@ class GroupsController < ApplicationController
         else
             render :new
         end
+    end
+
+    def show
+        @group = Group.find(params[:id])
     end
 
     def group_params 
