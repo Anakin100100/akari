@@ -17,6 +17,9 @@ gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'rubycritic', require: false
 
+gem 'pry', '~> 0.13.1'
+
+
 # render react components
 gem 'react-rails'
 

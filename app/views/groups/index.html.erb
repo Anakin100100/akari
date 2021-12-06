@@ -5,11 +5,16 @@
                 Dashboard
             </button>
         <% end %>
+        <%= link_to new_group_path, class: "transition duration-500 ease-in-out bg-indigo-900 text-white py-2 px-3 rounded-xl hover:bg-indigo-600 transform hover:scale-105" do %>
+            <button>
+                Nowa grupa
+            </button>
+        <% end %>
     </div>
     <p class="text-center mt-4 font-semibold text-4xl">
         Grupy:
     </p>
-    <div class="flex flex-wrap justify-items-center justify-around mx-16">
+    <div class="grid grid-cols-1 mx-16">
         <% @groups.each do |group| %>
             <%= render group, :group => group %>
         <% end %>
