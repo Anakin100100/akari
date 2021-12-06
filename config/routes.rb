@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get 'registrations' => 'pages#registrations'
   get 'student_dashboard' => 'students#student_dashboard', as: :student_dashboard
   get 'teacher_dashboard' => 'teachers#teacher_dashboard', as: :teacher_dashboard
+  get 'groups' => 'groups#index', as: :groups
 end
