@@ -1,0 +1,2 @@
+class GroupProjectReferencesController < ApplicationController
+end

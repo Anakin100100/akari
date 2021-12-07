@@ -9,14 +9,23 @@ class ProjectsController < ApplicationController
         cpu_limit = params["cpu_limit"]
         memory_limit = params["memory_limit"]
         binding.pry
-        if (Integer(cpu_limit, exception: false) == nil) == false || (Integer(memory_limit, exception: false) == nil) == false
+        # 0 means invalid input
+        if cpu_limit.to_i == 0 or memory_limit.to_i == 0
             flash["Invalid cpu or memory limit"] = "Please enter a valid number"
             redirect_to new_project_path
             return
         end 
+        reference = GroupProjectReference.new(name: params["project"]["name"])
+        reference.save
         @group.students.each do |student| 
-            student_project = Project.new(name: "#{student.name}_#{student.surname}_#{@group.name}_#{params["project"]["name"]}", group_id: @group.id, resource_definitions: params["project"]["resource_definitions"], cpu_limit: params["project"]["cpu_limit"].to_i, memory_limit: params["project"]["memory_limit"].to_i)
-            student_project.student_id = student.id
+            student_project = Project.new(
+                name: "#{student.name}_#{student.surname}_#{@group.name}_#{params["project"]["name"]}", 
+                group_id: @group.id, resource_definitions: params["project"]["resource_definitions"], 
+                cpu_limit: params["project"]["cpu_limit"].to_i, 
+                memory_limit: params["project"]["memory_limit"].to_i,
+                group_project_reference_id: reference.id,
+                student_id: student.id
+            )
             student_project.save 
         end
         redirect_to group_path(@group)
