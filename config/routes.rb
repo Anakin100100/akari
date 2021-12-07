@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get 'new_group' => 'groups#new', as: :new_group
   post 'groups' => 'groups#create' 
   get 'groups/:id' => 'groups#show', as: :group
+  delete 'groups/:id' => 'groups#destroy', as: :delete_group
 end
