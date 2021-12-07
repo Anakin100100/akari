@@ -6,9 +6,8 @@ class ProjectsController < ApplicationController
 
     def create 
         @group = Group.find(params["project"]["group_id"].to_i)
-        cpu_limit = params["cpu_limit"]
-        memory_limit = params["memory_limit"]
-        binding.pry
+        cpu_limit = params["project"]["cpu_limit"]
+        memory_limit = params["project"]["memory_limit"]
         # 0 means invalid input
         if cpu_limit.to_i == 0 or memory_limit.to_i == 0
             flash["Invalid cpu or memory limit"] = "Please enter a valid number"
@@ -20,12 +19,11 @@ class ProjectsController < ApplicationController
         @group.students.each do |student| 
             student_project = Project.new(
                 name: "#{student.name}_#{student.surname}_#{@group.name}_#{params["project"]["name"]}", 
-                group_id: @group.id, resource_definitions: params["project"]["resource_definitions"], 
                 cpu_limit: params["project"]["cpu_limit"].to_i, 
                 memory_limit: params["project"]["memory_limit"].to_i,
                 group_project_reference_id: reference.id,
-                student_id: student.id
             )
+            student_project.student_id = student.id
             student_project.save 
         end
         redirect_to group_path(@group)

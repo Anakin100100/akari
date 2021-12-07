@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 2021_12_07_155114) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
+    t.integer "group_id"
+    t.index ["group_id"], name: "index_group_project_references_on_group_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -36,14 +38,12 @@ ActiveRecord::Schema.define(version: 2021_12_07_155114) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.integer "student_id"
-    t.integer "group_id"
     t.integer "group_project_reference_id"
     t.text "resource_definitions", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "cpu_limit"
     t.integer "memory_limit"
-    t.index ["group_id"], name: "index_projects_on_group_id"
     t.index ["group_project_reference_id"], name: "index_projects_on_group_project_reference_id"
     t.index ["student_id"], name: "index_projects_on_student_id"
   end
