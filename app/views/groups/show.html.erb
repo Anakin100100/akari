@@ -1,3 +1,24 @@
-<p>
-    Nazwa grupy to: <%= @group.name %>
-</p>
+<div>
+    <div class="h-auto mt-8 flex flex-wrap justify-items-center justify-around mx-16">
+        <%= link_to teacher_dashboard_path, class: "transition duration-500 ease-in-out bg-indigo-900 text-white py-2 px-3 rounded-xl hover:bg-indigo-600 transform hover:scale-105" do %>
+            <button>
+                Dashboard
+            </button>
+        <% end %>
+        <%= link_to new_group_path, class: "transition duration-500 ease-in-out bg-indigo-900 text-white py-2 px-3 rounded-xl hover:bg-indigo-600 transform hover:scale-105" do %>
+            <button>
+                Nowa grupa
+            </button>
+        <% end %>
+    </div>
+    <p class="text-center mt-4 font-semibold text-4xl">
+        Uczniowie grupy <%= @group.name %>:
+    </p>
+    <div class="mx-32">
+        <% @group.students.each do |student| %>
+            <p>
+                <%= student.name %>
+            </p>
+        <% end %>
+    </div>
+</div>
