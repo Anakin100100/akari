@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_062739) do
+ActiveRecord::Schema.define(version: 2021_12_07_155114) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2021_12_07_062739) do
     t.text "resource_definitions", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "cpu_limit"
+    t.integer "memory_limit"
     t.index ["group_id"], name: "index_projects_on_group_id"
     t.index ["student_id"], name: "index_projects_on_student_id"
   end

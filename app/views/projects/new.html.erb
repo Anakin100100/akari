@@ -12,16 +12,25 @@
         <% end %>
     </div>
     <div class="grid place-items-center mt-16">
-        <%= form_for :project, url: "projects", method: :post do |form| %>
+        <%= form_for :project, url: "/projects", method: :post do |form| %>
             <div class="grid grid-cols-1 mx-16">
                 <div>
                     <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
-                    <%= form.text_field :name, placeholder: "Nazwa projektu" %>      
+                    <%= form.text_area :name, :cols => "100", :rows => "1", placeholder: "Nazwa projektu" %>      
                 </div>
                 <div>
-                    <%= form.label :students_names, class: "block text-gray-700 text-sm font-bold mb-2" %>
-                    <%= form.text_area :students_names, :cols => "100", placeholder: "Emaile uczniów odzielone nowymi liniami", :rows => "5" %>
+                    <%= form.label :resource_definitions, class: "block text-gray-700 text-sm font-bold mb-2" %>
+                    <%= form.text_area :resource_definitions, :cols => "100", placeholder: "Definicja projektu w yaml", :rows => "5" %>
                 </div>
+                <div>
+                    <%= form.label :cpu_limit, class: "block text-gray-700 text-sm font-bold mb-2" %>
+                    <%= form.text_area :cpu_limit, :cols => "100", :rows => "1", placeholder: "limit cpu w mili cpu (1/1000) np. 500 oznacza 0.5 rdzenia" %>      
+                </div>
+                <div>
+                    <%= form.label :memory_limit, class: "block text-gray-700 text-sm font-bold mb-2" %>
+                    <%= form.text_area :memory_limit, :cols => "100", :rows => "1", placeholder: "Limit pamięci w megabajtach" %>      
+                </div>
+                <%= form.hidden_field :group_id, value: params["group_id"] %>
                 <%= form.submit  %>
             </div>
         <% end  %>

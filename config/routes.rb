@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :projects
   devise_for :students, path: 'students'
   devise_for :teachers, path: 'teachers'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -15,4 +14,6 @@ Rails.application.routes.draw do
   post 'groups' => 'groups#create' 
   get 'groups/:id' => 'groups#show', as: :group
   delete 'groups/:id' => 'groups#destroy', as: :delete_group
+  post 'projects' => 'projects#create'
+  get 'new_project' => 'projects#new', as: :new_project
 end
