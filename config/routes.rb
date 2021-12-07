@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   delete 'groups/:id' => 'groups#destroy', as: :delete_group
   post 'projects' => 'projects#create'
   get 'new_project' => 'projects#new', as: :new_project
+  get 'projects/:id' => 'projects#show', as: :project
 end

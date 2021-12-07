@@ -22,7 +22,7 @@
     <div class="mx-32">
         <% @group.projects.each do |project| %>
             <p class="font-semibold text-lg">
-                <%= project.name %>
+                <%= link_to project.name, project_path(project) %>
             </p>
         <% end %>
     </div>
