@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :projects only[:index, :show]
+  resources :projects
   devise_for :students, path: 'students'
   devise_for :teachers, path: 'teachers'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
