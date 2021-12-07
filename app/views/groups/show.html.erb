@@ -17,16 +17,16 @@
         <% end %>
     </div>
     <p class="text-center mt-4 font-semibold text-4xl">
+        Projekty grupy <%= @group.name %>:
+    </p>
+    <p class="text-center mt-4 font-semibold text-4xl">
         Uczniowie grupy <%= @group.name %>:
     </p>
     <div class="mx-32">
         <% @group.students.each do |student| %>
-            <p>
-                <%= student.name %>
+            <p class="font-semibold text-lg">
+                <%= student.name %> <%= student.surname %>
             </p>
         <% end %>
     </div>
-    <p class="text-center mt-4 font-semibold text-4xl">
-        Projekty grupy <%= @group.name %>:
-    </p>
 </div>
