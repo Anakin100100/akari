@@ -14,8 +14,12 @@ class ProjectsController < ApplicationController
             redirect_to new_project_path
             return
         end 
-        reference = GroupProjectReference.new(name: params["project"]["name"])
+        reference = GroupProjectReference.new(
+            name: params["project"]["name"],
+            group_id: @group.id
+        )
         reference.save
+        binding.pry
         @group.students.each do |student| 
             student_project = Project.new(
                 name: "#{student.name}_#{student.surname}_#{@group.name}_#{params["project"]["name"]}", 

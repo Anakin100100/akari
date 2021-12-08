@@ -20,9 +20,9 @@
         Projekty grupy <%= @group.name %>:
     </p>
     <div class="mx-32">
-        <% @group.group_project_references.each do |project_reference_name| %>
+        <% @group.group_project_references.each do |project_reference| %>
             <p class="font-semibold text-lg">
-                <%= project_reference_name %>
+                <%= project_reference.name %>
             </p>
         <% end %>
     </div>
