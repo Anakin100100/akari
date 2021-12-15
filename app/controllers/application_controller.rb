@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
 
     def after_sign_in_path_for(resource)
         if resource.is_a?(Teacher)
-            teacher_dashboard_path # your path
+            teacher_dashboard_path 
         elsif resource.is_a?(Student)
-            student_dashboard_path # your path
+            student_dashboard_path
         end
     end
 

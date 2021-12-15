@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_155114) do
+ActiveRecord::Schema.define(version: 2021_12_15_185301) do
 
   create_table "group_project_references", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2021_12_07_155114) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "surname"
-    t.date "date_of_birth"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
@@ -73,7 +72,6 @@ ActiveRecord::Schema.define(version: 2021_12_07_155114) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "surname"
-    t.string "phone_number"
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end
