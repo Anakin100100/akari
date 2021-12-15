@@ -7,5 +7,5 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_and_belongs_to_many :groups
   has_many :teachers, through: :groups
-  has_many :projects
+  has_many :projects, dependent: :destroy
 end
