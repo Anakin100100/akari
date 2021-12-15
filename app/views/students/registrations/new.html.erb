@@ -15,6 +15,22 @@
                               placeholder: "user@example.com",
                               class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none shadow focus:shadow-outline" %>
         </div>
+
+        <div class="mb-4">
+            <%= f.label :name, class: "block font-bold mb-2 text-gray-700 text-sm" %>
+            <%= f.text_field :name,
+                              autocomplete: "name",
+                              placeholder: "name",
+                              class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none shadow focus:shadow-outline" %>
+        </div>
+
+        <div class="mb-4">
+            <%= f.label :surname, class: "block font-bold mb-2 text-gray-700 text-sm" %>
+            <%= f.text_field :surname,
+                              autocomplete: "surname",
+                              placeholder: "surname",
+                              class: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none shadow focus:shadow-outline" %>
+        </div>
   
         <div class="mb-4">
             <%= f.label :password, class: "block font-bold mb-2 text-gray-700 text-sm" %>
