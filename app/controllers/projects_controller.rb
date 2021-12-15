@@ -19,7 +19,6 @@ class ProjectsController < ApplicationController
             group_id: @group.id
         )
         reference.save
-        binding.pry
         @group.students.each do |student| 
             student_project = Project.new(
                 name: "#{student.name}_#{student.surname}_#{@group.name}_#{params["project"]["name"]}", 
@@ -29,6 +28,7 @@ class ProjectsController < ApplicationController
             )
             student_project.student_id = student.id
             student_project.save 
+            binding.pry
         end
         redirect_to group_path(@group)
     end
