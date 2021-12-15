@@ -10,6 +10,5 @@ FactoryBot.define do
     password { Faker::Internet.password }
     password_confirmation { password }
     date_of_birth { Faker::Date.birthday(min_age: 5, max_age: 8) }
-    group
   end
 end
