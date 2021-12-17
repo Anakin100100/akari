@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Student registrations', type: :system do
+RSpec.describe 'Student logins', type: :system do
   it 'contains the login prompt' do
     visit '/students/sign_in'
     expect(page).to have_content('Log In')
@@ -21,6 +21,4 @@ RSpec.describe 'Student registrations', type: :system do
     click_button('Log in')
     expect(page).to have_content("Student dashboard")
   end
-
-
 end
