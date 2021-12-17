@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'teacher_dashboard' => 'teachers#teacher_dashboard', as: :teacher_dashboard
   get 'groups' => 'groups#index', as: :groups
   get 'new_group' => 'groups#new', as: :new_group
-  post 'groups' => 'groups#create' 
+  post 'groups' => 'groups#create'
   get 'groups/:id' => 'groups#show', as: :group
   delete 'groups/:id' => 'groups#destroy', as: :delete_group
   post 'projects' => 'projects#create'

@@ -19,7 +19,6 @@ gem 'rubycritic', require: false
 
 gem 'pry', '~> 0.13.1'
 
-
 # render react components
 gem 'react-rails'
 
