@@ -1,9 +1,32 @@
 # frozen_string_literal: true
+require 'warden'
+
+module DeviseRequestSpecHelpers
+
+  include Warden::Test::Helpers
+
+  def sign_in(resource_or_scope, resource = nil)
+    resource ||= resource_or_scope
+    scope = Devise::Mapping.find_scope!(resource_or_scope)
+    login_as(resource, scope: scope)
+  end
+
+  def sign_out(resource_or_scope)
+    scope = Devise::Mapping.find_scope!(resource_or_scope)
+    logout(scope)
+  end
+
+end
+
 
 RSpec.configure do |config|
+
+  
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
+
+  config.include DeviseRequestSpecHelpers, type: :system
 
   config.before(:each, type: :system) do
     driven_by :rack_test
@@ -25,6 +48,7 @@ RSpec.configure do |config|
   config.before(:all, type: :system) do
     Capybara.server = :puma, { Silent: true }
   end
+
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
