@@ -19,6 +19,6 @@ RSpec.describe 'Teacher logins', type: :system do
     fill_in 'Email', with: teacher.email
     fill_in 'Password', with: teacher.password
     click_button('Log in')
-    expect(page).to have_content("Grupy")
+    expect(page).to have_content('Grupy')
   end
 end

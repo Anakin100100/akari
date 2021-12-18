@@ -21,7 +21,7 @@ RSpec.describe 'Teacher registrations', type: :system do
     fill_in 'Surname', with: teacher.surname
     fill_in 'Password', with: teacher.password
     fill_in 'Password confirmation', with: teacher.password
-    expect {click_button('Sign Up')}.to change{ Teacher.count }.by(1)
-    expect(page).to have_content("Grupy")
+    expect { click_button('Sign Up') }.to change { Teacher.count }.by(1)
+    expect(page).to have_content('Grupy')
   end
 end

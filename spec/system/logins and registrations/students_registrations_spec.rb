@@ -21,7 +21,7 @@ RSpec.describe 'Student registrations', type: :system do
     fill_in 'Surname', with: student.surname
     fill_in 'Password', with: student.password
     fill_in 'Password confirmation', with: student.password
-    expect {click_button('Sign Up')}.to change{ Student.count }.by(1)
-    expect(page).to have_content("Student dashboard")
+    expect { click_button('Sign Up') }.to change { Student.count }.by(1)
+    expect(page).to have_content('Student dashboard')
   end
 end

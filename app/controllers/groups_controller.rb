@@ -19,7 +19,6 @@ class GroupsController < ApplicationController
       else
         @group.students << Student.where(email: student_email)
       end
-      binding.pry
     end
     if invalid_names.empty? == false
       flash[:Student_validation_error] =

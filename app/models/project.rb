@@ -2,5 +2,5 @@
 
 class Project < ApplicationRecord
   belongs_to :student
-  has_one :group_project_reference
+  belongs_to :group_project_reference
 end

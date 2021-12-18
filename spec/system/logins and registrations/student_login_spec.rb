@@ -19,6 +19,6 @@ RSpec.describe 'Student logins', type: :system do
     fill_in 'Email', with: student.email
     fill_in 'Password', with: student.password
     click_button('Log in')
-    expect(page).to have_content("Student dashboard")
+    expect(page).to have_content('Student dashboard')
   end
 end

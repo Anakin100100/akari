@@ -7,12 +7,25 @@ class ProjectsController < ApplicationController
 
   def create
     @group = Group.find(params['project']['group_id'].to_i)
+
+    if params['project']['name'] == ''
+      flash["name can't be empty"] = 'Please enter a name'
+      redirect_to new_project_path(group_id: @group.id)
+      return
+    end
+
+    if params['project']['resource_definitions'] == ''
+      flash["resource definitions can't be empty"] = 'Please enter resource definitions'
+      redirect_to new_project_path(group_id: @group.id)
+      return
+    end
+
     cpu_limit = params['project']['cpu_limit']
     memory_limit = params['project']['memory_limit']
     # 0 means invalid input
-    if cpu_limit.to_i.zero? || memory_limit.to_i.zero?
+    if cpu_limit.to_i <= 0 || memory_limit.to_i <= 0
       flash['Invalid cpu or memory limit'] = 'Please enter a valid number'
-      redirect_to new_project_path
+      redirect_to new_project_path(group_id: @group.id)
       return
     end
     reference = GroupProjectReference.new(
@@ -29,7 +42,6 @@ class ProjectsController < ApplicationController
       )
       student_project.student_id = student.id
       student_project.save
-      binding.pry
     end
     redirect_to group_path(@group)
   end
