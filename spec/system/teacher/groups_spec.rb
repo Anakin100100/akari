@@ -141,5 +141,14 @@ RSpec.describe 'Groups', type: :system do
       click_button 'Save Project'
       expect(page).to have_content('Invalid cpu or memory limit')
     end
+
+    it 'allows to create a project with valid parameters' do
+        fill_in 'Name', with: 'Project name'
+        fill_in 'Resource definitions', with: 'Definition of resources to be created'
+        fill_in 'Cpu limit', with: 100
+        fill_in 'Memory limit', with: 100
+        click_button 'Save Project'
+        expect(page).to have_content("Project creation successful")
+    end
   end
 end
