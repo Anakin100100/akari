@@ -11,5 +11,4 @@ RSpec.describe 'Teacher dashboard', type: :system do
         click_link "Grupy"
         expect(page).to have_current_path("/groups")
     end
-
 end

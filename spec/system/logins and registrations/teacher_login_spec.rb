@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Teacher registrations', type: :system do
+RSpec.describe 'Teacher logins', type: :system do
   it 'contains the login prompt' do
     visit '/teachers/sign_in'
     expect(page).to have_content('Log In')
