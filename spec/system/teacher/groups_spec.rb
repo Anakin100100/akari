@@ -118,7 +118,7 @@ RSpec.describe 'Groups', type: :system do
       expect(page).to have_content('Invalid cpu or memory limit')
     end
 
-    it 'will not allow to create a project with negative memory limit' do
+    it 'will not allow to create a project with negative cpu limit' do
       fill_in 'Name', with: 'Project name'
       fill_in 'Resource definitions', with: 'Definition of resources to be created'
       fill_in 'Cpu limit', with: -1

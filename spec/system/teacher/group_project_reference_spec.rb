@@ -5,9 +5,9 @@ require 'rails_helper'
 RSpec.describe 'Showing group project', type: :system do
     before(:each) do
         @teacher = create(:teacher)
-        (1..2).each do |_i|
+        (1..1).each do |_i|
             group = create(:group, teacher_id: @teacher.id)
-            (1..2).each do |_j|
+            (1..1).each do |_j|
                 group.students << create(:student)
             end
             group.save 

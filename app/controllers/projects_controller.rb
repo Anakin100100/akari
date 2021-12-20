@@ -88,6 +88,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params['id'])
     @project.update(project_params)
 
+    flash['Project update status'] = 'Success'
     redirect_to project_path(@project)
   end
 
