@@ -6,19 +6,24 @@ RSpec.describe 'Showing group project', type: :system do
     before(:each) do
         @teacher = create(:teacher)
         (1..5).each do |_i|
-        @teacher.groups << create(:group, teacher_id: @teacher.id)
+            group = create(:group, teacher_id: @teacher.id)
+            (1..5).each do |_j|
+                group.students << create(:student)
+            end
+            group.save 
+            @teacher.groups << group
+            @teacher.save
         end
         @teacher.groups.each do |group|
             group_project_reference = create(:group_project_reference, group_id: group.id)
             group.group_project_references << group_project_reference
             group.save
             group.students.each do |student|
-                project = create(:project)
-                project.group_project_reference_id = group_project_reference.id
-                project.student_id = student.id
-                project.save
-        end
-        group.save
+                project = create(:project,
+                    group_project_reference_id: group_project_reference.id,
+                    student_id: student.id
+                )
+            end
         end
 
         @teacher.save
@@ -34,6 +39,13 @@ RSpec.describe 'Showing group project', type: :system do
     it "displays the name of each project in the group project" do
         @group_project_reference.projects.each do |project|
             expect(page).to have_content(project.name)
+        end
+    end
+
+    it "displays the name of each student in the group project" do
+        @students = Project.where(group_project_reference_id: @group_project_reference.id).map(&:student)
+        @students.each do |student|
+            expect(page).to have_content(student.name)
         end
     end
 end

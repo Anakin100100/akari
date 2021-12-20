@@ -5,5 +5,6 @@ class GroupProjectReferencesController < ApplicationController
 
     def show
         @group_project_reference = GroupProjectReference.find(params[:id])
+        @students = Project.where(group_project_reference_id: @group_project_reference.id).map(&:student)
     end
 end
