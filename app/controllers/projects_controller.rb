@@ -62,6 +62,35 @@ class ProjectsController < ApplicationController
     @project = Project.find(params['id'])
   end
 
+  def update
+    if params['project']['name'] == ''
+      flash["name can't be empty"] = 'Please enter a name'
+      redirect_to modify_project_path(id: params['id'])
+      return
+    end
+
+    if params['project']['resource_definitions'] == ''
+      flash["resource definitions can't be empty"] = 'Please enter resource definitions'
+      redirect_to modify_project_path(id: params['id'])
+      return
+    end
+
+    cpu_limit = params['project']['cpu_limit']
+    memory_limit = params['project']['memory_limit']
+
+    # 0 means invalid input
+    if cpu_limit.to_i <= 0 || memory_limit.to_i <= 0
+      flash['Invalid cpu or memory limit'] = 'Please enter a valid number'
+      redirect_to modify_project_path(id: params['id'])
+      return
+    end
+
+    @project = Project.find(params['id'])
+    @project.update(project_params)
+
+    redirect_to project_path(@project)
+  end
+
   def destroy 
     @project = Project.find(params['id'])
     @group_project_reference = GroupProjectReference.find(@project.group_project_reference_id)

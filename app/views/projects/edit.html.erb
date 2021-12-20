@@ -6,5 +6,27 @@
             </button>
         <% end %>
     </div>
-    <p>editing a project</p>
+    <div class="grid place-items-center mt-16">
+        <%= form_for @project, url: update_project_url(@project), method: :patch do |form| %>
+            <div class="grid grid-cols-1 mx-16">
+                <div>
+                    <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+                    <%= form.text_area :name, :cols => "100", :rows => "1" %>      
+                </div>
+                <div>
+                    <%= form.label :resource_definitions, class: "block text-gray-700 text-sm font-bold mb-2" %>
+                    <%= form.text_area :resource_definitions, :cols => "100", :rows => "5" %>
+                </div>
+                <div>
+                    <%= form.label :cpu_limit, class: "block text-gray-700 text-sm font-bold mb-2" %>
+                    <%= form.text_area :cpu_limit, :cols => "100", :rows => "1" %>      
+                </div>
+                <div>
+                    <%= form.label :memory_limit, class: "block text-gray-700 text-sm font-bold mb-2" %>
+                    <%= form.text_area :memory_limit, :cols => "100", :rows => "1" %>      
+                </div>
+                <%= form.submit  %>
+            </div>
+        <% end  %>
+    </div>
 </div>

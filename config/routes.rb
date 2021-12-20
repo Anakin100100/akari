@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   get 'modify_project/:id' => 'projects#edit', as: :modify_project
   delete 'projects/:id' => 'projects#destroy', as: :delete_project
   get 'group_project/:id' => 'group_project_references#show', as: :group_project
-
+  patch "projects/:id" => "projects#update", as: :update_project
 end
