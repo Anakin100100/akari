@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   post 'projects' => 'projects#create'
   get 'new_project' => 'projects#new', as: :new_project
   get 'projects/:id' => 'projects#show', as: :project
+  get 'modify_project/:id' => 'projects#edit', as: :modify_project
+  delete 'projects/:id' => 'projects#destroy', as: :delete_project
   get 'group_project/:id' => 'group_project_references#show', as: :group_project
+
 end

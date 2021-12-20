@@ -58,6 +58,17 @@ class ProjectsController < ApplicationController
     end 
   end
 
+  def edit  
+    @project = Project.find(params['id'])
+  end
+
+  def destroy 
+    @project = Project.find(params['id'])
+    @group_project_reference = GroupProjectReference.find(@project.group_project_reference_id)
+    @project.destroy
+    redirect_to group_project_path(@group_project_reference.id)
+  end
+
   def project_params
     params.require(:project).permit(:name, :group_id, :resource_definitions, :cpu_limit, :memory_limit)
   end

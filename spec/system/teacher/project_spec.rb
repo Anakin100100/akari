@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'New group form', type: :system do
+RSpec.describe 'Project', type: :system do
     before(:each) do
         @teacher = create(:teacher)
         (1..2).each do |_i|
@@ -43,4 +43,12 @@ RSpec.describe 'New group form', type: :system do
         group = Group.where(id: group_project_reference.group_id)
         expect(page).to have_content("Group: #{group.first.name}")
     end
+
+    it "deletes a project when a delete button is clicked" do
+        expect(page).to have_content("Usuń projekt")
+        expect { click_link "Usuń projekt" }.to change { Project.count }.by(-1)
+        expect(page).to have_content("#{@group_project_reference.name}")
+    end
+
+    
 end

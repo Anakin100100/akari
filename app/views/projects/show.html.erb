@@ -1,6 +1,25 @@
-<div class="mx-32 mt-16">
-    <p>CPU limit: <%= @project.cpu_limit %> mcpu (1/1000s of a cpu)</p>
-    <p>Memory limit: <%= @project.memory_limit %> MB</p>
-    <p>Student: <%= Student.find(@project.student_id).name %> <%= Student.find(@project.student_id).surname %></p>
-    <p>Group: <%= @group %></p>
+<div>
+    <div class="h-auto mt-8 flex flex-wrap justify-items-center justify-around mx-16">
+        <%= link_to teacher_dashboard_path, class: "transition duration-500 ease-in-out bg-indigo-900 text-white py-2 px-3 rounded-xl hover:bg-indigo-600 transform hover:scale-105" do %>
+            <button>
+                Dashboard
+            </button>
+        <% end %>
+        <%= link_to modify_project_path(@project), class: "transition duration-500 ease-in-out bg-indigo-900 text-white py-2 px-3 rounded-xl hover:bg-indigo-600 transform hover:scale-105" do %>
+            <button>
+                Modyfikuj projekt
+            </button>
+        <% end %>
+        <%= link_to delete_project_path(@project), data: { confirm: 'Are you sure?' }, method: :delete, class: "transition duration-500 ease-in-out bg-indigo-900 text-white py-2 px-3 rounded-xl hover:bg-indigo-600 transform hover:scale-105" do %>
+            <button>
+                Usuń projekt
+            </button>
+        <% end %>
+    </div>
+    <div class="mx-32 mt-16">
+        <p>CPU limit: <%= @project.cpu_limit %> mcpu (1/1000s of a cpu)</p>
+        <p>Memory limit: <%= @project.memory_limit %> MB</p>
+        <p>Student: <%= Student.find(@project.student_id).name %> <%= Student.find(@project.student_id).surname %></p>
+        <p>Group: <%= @group %></p>
+    </div>
 </div>
