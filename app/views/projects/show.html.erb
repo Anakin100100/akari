@@ -2,5 +2,5 @@
     <p>CPU limit: <%= @project.cpu_limit %> mcpu (1/1000s of a cpu)</p>
     <p>Memory limit: <%= @project.memory_limit %> MB</p>
     <p>Student: <%= Student.find(@project.student_id).name %> <%= Student.find(@project.student_id).surname %></p>
-    <p>Group: <%= Group.find(@project.group_id).name %></p>
+    <p>Group: <%= @group %></p>
 </div>

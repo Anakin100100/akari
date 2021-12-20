@@ -14,9 +14,11 @@
     </p>
     <div class="mx-32">
         <% @group_project_reference.projects.each do |project| %>
-            <p class="font-semibold text-lg">
-                <%= project.name %>
-            </p>
+            <%= link_to project_path(project) do %> 
+                <p class="font-semibold text-lg">
+                    <%= project.name %>
+                </p>
+            <% end %>
         <% end %>
     </div>
     <p class="text-center mt-4 font-semibold text-4xl">

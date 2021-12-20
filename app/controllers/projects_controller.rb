@@ -49,6 +49,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params['id'])
+    group_project_reference = GroupProjectReference.find(@project.group_project_reference_id)
+    group = Group.where(id: group_project_reference.group_id)
+    if group.empty? 
+       @group = "Brak grupy"
+    else  
+      @group = group.first.name
+    end 
   end
 
   def project_params
