@@ -30,4 +30,10 @@ RSpec.describe 'Showing group project', type: :system do
     it "has the name of the group project on the page" do
         expect(page).to have_content("Projekt groupowy: #{@group_project_reference.name}")
     end
+
+    it "displays the name of each project in the group project" do
+        @group_project_reference.projects.each do |project|
+            expect(page).to have_content(project.name)
+        end
+    end
 end

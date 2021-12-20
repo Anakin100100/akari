@@ -9,4 +9,15 @@
     <p class="text-center mt-4 font-semibold text-4xl">
         Projekt groupowy: <%=@group_project_reference.name%>
     </p>
+    <p class="text-center mt-4 font-semibold text-4xl">
+        Projekty tego projektu grupowego:
+    </p>
+    <div class="mx-32">
+        <% @group_project_reference.projects.each do |project| %>
+            <p class="font-semibold text-lg">
+                <%= project.name %>
+            </p>
+        <% end %>
+    </div>
+
 </div>
