@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Showing group project', type: :system do
+RSpec.describe 'New group form', type: :system do
     before(:each) do
         @teacher = create(:teacher)
         (1..2).each do |_i|
@@ -30,22 +30,17 @@ RSpec.describe 'Showing group project', type: :system do
         sign_in @teacher 
         @group_project_reference = @teacher.groups.first.group_project_references.first
         visit("/group_project/#{@group_project_reference.id}")
+        @project = Project.where(group_project_reference_id: @group_project_reference.id).first
+        click_link "#{@project.name}"
     end
 
-    it "has the name of the group project on the page" do
-        expect(page).to have_content("Projekt groupowy: #{@group_project_reference.name}")
-    end
-
-    it "displays the name of each project in the group project" do
-        @group_project_reference.projects.each do |project|
-            expect(page).to have_content(project.name)
-        end
-    end
-
-    it "displays the name of each student in the group project" do
-        @students = Project.where(group_project_reference_id: @group_project_reference.id).map(&:student)
-        @students.each do |student|
-            expect(page).to have_content(student.name)
-        end
+    it "displays the correct cpu value" do
+        expect(page).to have_content("CPU limit: #{@project.cpu_limit} mcpu (1/1000s of a cpu)")
+        expect(page).to have_content("Memory limit: #{@project.memory_limit} MB")
+        @student = Student.find(@project.student_id)
+        expect(page).to have_content("Student: #{@student.name} #{@student.surname}")
+        group_project_reference = GroupProjectReference.find(@project.group_project_reference_id)
+        group = Group.where(id: group_project_reference.group_id)
+        expect(page).to have_content("Group: #{group.first.name}")
     end
 end
