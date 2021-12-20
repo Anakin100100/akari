@@ -40,6 +40,15 @@ RSpec.describe 'Groups', type: :system do
     expect(page).to have_current_path('/new_group')
   end
 
+  it 'can redirect to group project page' do
+    group = @teacher.groups.first
+    click_link "#{group.name}"
+    group_project_reference = group.group_project_references.first
+    click_link "#{group_project_reference.name}"
+    expect(page).to have_current_path("/group_project/#{group_project_reference.id}")
+    expect(page).to have_content("Projekt groupowy: #{group_project_reference.name}")
+  end
+
   it 'lists each group that belongs to the teacher' do
     @teacher.groups.each do |group|
       expect(page).to have_content(group.name)

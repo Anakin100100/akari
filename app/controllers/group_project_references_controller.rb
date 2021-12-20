@@ -4,5 +4,6 @@ class GroupProjectReferencesController < ApplicationController
     before_action :authenticate_teacher!
 
     def show
+        @group_project_reference = GroupProjectReference.find(params[:id])
     end
 end
