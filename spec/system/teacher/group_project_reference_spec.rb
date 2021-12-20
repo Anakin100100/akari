@@ -27,7 +27,7 @@ RSpec.describe 'Showing group project', type: :system do
         visit("/group_project/#{@group_project_reference.id}")
     end
 
-    it "setup works" do
+    it "has the name of the group project on the page" do
         expect(page).to have_content("Projekt groupowy: #{@group_project_reference.name}")
     end
 end
