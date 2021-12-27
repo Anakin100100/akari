@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_185301) do
+ActiveRecord::Schema.define(version: 2021_12_27_120702) do
 
   create_table "group_project_references", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_185301) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "cpu_limit"
     t.integer "memory_limit"
+    t.string "terrafrom_lineage"
     t.index ["group_project_reference_id"], name: "index_projects_on_group_project_reference_id"
     t.index ["student_id"], name: "index_projects_on_student_id"
   end

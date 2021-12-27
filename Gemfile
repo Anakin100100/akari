@@ -12,6 +12,9 @@ gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 
+# terraform client
+gem 'ruby-terraform'
+
 # linters
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
