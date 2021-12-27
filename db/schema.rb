@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_12_27_120702) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "cpu_limit"
     t.integer "memory_limit"
-    t.string "terrafrom_lineage"
+    t.string "terraform_lineage"
     t.index ["group_project_reference_id"], name: "index_projects_on_group_project_reference_id"
     t.index ["student_id"], name: "index_projects_on_student_id"
   end

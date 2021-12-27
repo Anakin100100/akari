@@ -9,13 +9,14 @@ class Project < ApplicationRecord
 
 
   def create_and_update_resources()
-    if self.terraform_lineage = nil
+    if self.terraform_lineage == nil
       self.terraform_lineage = SecureRandom.uuid
       self.save! 
     end
 
-    Dir.chdir(Rails.root.to_s + "/terrafrom_workdir")
+    Dir.chdir(Rails.root.to_s + "/terraform_workdir")
 
+    binding.pry
     #creating a namespace for a project with that project name
     resource_definitions = JSON.parse(self.resource_definitions)
     resource_definitions["resource"][0]["kubernetes_namespace"][0]["project_namespace"][0]["metadata"][0]["name"] = "#{self.name}_#{self.terraform_lineage}"
