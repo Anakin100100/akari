@@ -38,11 +38,12 @@ class ProjectsController < ApplicationController
         name: "#{student.name}_#{student.surname}_#{@group.name}_#{params['project']['name']}",
         cpu_limit: params['project']['cpu_limit'].to_i,
         memory_limit: params['project']['memory_limit'].to_i,
-        group_project_reference_id: reference.id
+        resource_definitions: params['project']['resource_definitions'],
+        group_project_reference_id: reference.id,
+        student_id: student.id
       )
-      student_project.student_id = student.id
       student_project.save
-      student_project.create_and_update_resources()
+      #student_project.create_and_update_resources()
     end
     flash['Project creation successful'] = 'The project has been created'
     redirect_to group_path(@group)
