@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   delete 'projects/:id' => 'projects#destroy', as: :delete_project
   get 'group_project/:id' => 'group_project_references#show', as: :group_project
   patch "projects/:id" => "projects#update", as: :update_project
+  delete 'group_project/:id' => 'group_project_references#delete', as: :delete_group_project
 end

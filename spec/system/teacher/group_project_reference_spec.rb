@@ -33,7 +33,7 @@ RSpec.describe 'Showing group project', type: :system do
     end
 
     it "has the name of the group project on the page" do
-        expect(page).to have_content("Projekt groupowy: #{@group_project_reference.name}")
+        expect(page).to have_content("#{@group_project_reference.name}")
     end
 
     it "displays the name of each project in the group project" do
@@ -47,5 +47,14 @@ RSpec.describe 'Showing group project', type: :system do
         @students.each do |student|
             expect(page).to have_content(student.name)
         end
+    end
+
+    it "allows the teacher to delete the group project" do
+        expect { click_link 'Usuń projekt grupowy' }.to change { Project.count }.by(-@group_project_reference.projects.count)
+    end
+
+    it "can redirect to group page" do
+        click_link "Grupa #{@group_project_reference.group.name}"
+        expect(page).to have_current_path("/groups/#{@group_project_reference.group.id}")
     end
 end
