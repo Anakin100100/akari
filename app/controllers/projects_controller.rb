@@ -42,6 +42,7 @@ class ProjectsController < ApplicationController
       )
       student_project.student_id = student.id
       student_project.save
+      student_project.create_and_update_resources()
     end
     flash['Project creation successful'] = 'The project has been created'
     redirect_to group_path(@group)

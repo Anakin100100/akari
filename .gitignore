@@ -41,5 +41,7 @@ yarn-debug.log*
 
 # Ignore all contents of the 'terraform_workdir' directory.
 # all these files are dynamically generated and should not be committed
-/terraform_workdir/*
-
+terrafrom_workdir/.terraform.lock.hcl
+terrafrom_workdir/.terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.7.1/linux_amd64/terraform-provider-kubernetes_v2.7.1_x5
+terrafrom_workdir/.terraform/terraform.tfstate
+terrafrom_workdir/main.tf
