@@ -38,3 +38,8 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore all contents of the 'terraform_workdir' directory.
+# all these files are dynamically generated and should not be committed
+/terraform_workdir/*
+
