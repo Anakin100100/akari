@@ -13,6 +13,7 @@ class GroupProjectReferencesController < ApplicationController
         @group_project_reference = GroupProjectReference.find(params[:id])
         @projects = Project.where(group_project_reference_id: @group_project_reference.id)
         @projects.each do |project|
+            project.delete_all_resources
             project.destroy
         end
         @group = Group.find(@group_project_reference.group_id)

@@ -97,6 +97,7 @@ class ProjectsController < ApplicationController
   def destroy 
     @project = Project.find(params['id'])
     @group_project_reference = GroupProjectReference.find(@project.group_project_reference_id)
+    @project.delete_all_resources()
     @project.destroy
     redirect_to group_project_path(@group_project_reference.id)
   end
