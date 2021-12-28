@@ -15,7 +15,9 @@ class Project < ApplicationRecord
 
     #creating a namespace for a project with that project name
     resource_definitions = JSON.parse(self.resource_definitions)
-    resource_definitions["resource"][0]["kubernetes_namespace"][0]["project_namespace"][0]["metadata"][0]["name"] = "#{self.name}_#{self.terraform_lineage}".downcase.tr!('_', '-')
+    resource_definitions["resource"][0]["kubernetes_namespace"][0]["ns_#{self.terraform_lineage}"] = resource_definitions["resource"][0]["kubernetes_namespace"][0]["project_namespace"]
+    resource_definitions["resource"][0]["kubernetes_namespace"][0].delete("project_namespace")
+    resource_definitions["resource"][0]["kubernetes_namespace"][0]["ns_#{self.terraform_lineage}"][0]["metadata"][0]["name"] = "#{self.terraform_lineage}"
     self.resource_definitions = JSON.dump(resource_definitions)
     self.save!
 
@@ -25,7 +27,7 @@ class Project < ApplicationRecord
     new_tfstate = JSON.parse(terraform_state_file)
     new_tfstate['lineage'] = self.terraform_lineage
     File.write('.terraform/terraform.tfstate', JSON.dump(new_tfstate))
-    out = %x( terraform init -migrate-state )
+    out = %x( terraform init -backend-config="conn_str=postgres://postgres:testpassword@192.168.3.100/postgres?sslmode=disable" )
     RubyTerraform.plan(out: 'main.tfplan')
     RubyTerraform.apply(plan: 'main.tfplan')
     File.delete('main.tf.json') if File.exist?('main.tf.json')
@@ -43,7 +45,6 @@ class Project < ApplicationRecord
     new_tfstate['lineage'] = self.terraform_lineage
     File.write('.terraform/terraform.tfstate', JSON.dump(new_tfstate))
     out = %x( terraform init -migrate-state )
-    binding.pry  
     RubyTerraform.destroy(auto_approve: true)
   end
 
