@@ -45,3 +45,6 @@ terrafrom_workdir/.terraform.lock.hcl
 terrafrom_workdir/.terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.7.1/linux_amd64/terraform-provider-kubernetes_v2.7.1_x5
 terrafrom_workdir/.terraform/terraform.tfstate
 terrafrom_workdir/main.tf
+terraform_workdir/main.tf.json
+terraform_workdir/terraform.tfstate
+terraform_workdir/terraform.tfstate.backup

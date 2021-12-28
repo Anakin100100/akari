@@ -36,14 +36,15 @@ class Project < ApplicationRecord
     Dir.chdir(Rails.root.to_s + "/terraform_workdir")
 
     File.open("main.tf.json", 'w') {|f| f.write(self.resource_definitions) }
-
+    
+  
     terraform_state_file = File.read('.terraform/terraform.tfstate')
     new_tfstate = JSON.parse(terraform_state_file)
     new_tfstate['lineage'] = self.terraform_lineage
     File.write('.terraform/terraform.tfstate', JSON.dump(new_tfstate))
     out = %x( terraform init -migrate-state )
-    
-    RubyTerraform.destroy()
+    binding.pry  
+    RubyTerraform.destroy(auto_approve: true)
   end
 
   def create_terraform_lineage_if_not_exists()
